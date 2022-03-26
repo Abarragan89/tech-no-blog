@@ -11,10 +11,6 @@ router.get('/', (req, res) => {
                 attributes: ['username']
             }
         ]
-            // {
-            //     model: Comment,
-            //     key: "blog_id"
-            // }
     })
 
     .then(dbBlogData => res.json(dbBlogData))
