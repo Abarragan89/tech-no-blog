@@ -1,14 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
-
 // create our User model
 class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
-
 // define table columns and configuration
 User.init(
     {
@@ -49,15 +47,10 @@ User.init(
                 return updatedUserData;
             }
         },
-        // Table configuration options
-        // Don't automatically create createdAt/updatedAt timestamp fields
         sequelize,
         timestamps: false,
-        // Don't plurailze name of database talbe
         freezeTableName: true,
-        // Use underscores instead of camel-casing
-        underscored: true,
-        // Make model name stay lowercase in database 
+        underscored: true, 
         modelName: 'user'
     }
 );

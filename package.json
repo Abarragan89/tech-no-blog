@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Abarragan89/tech-no-blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bulma": "^0.9.3",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",

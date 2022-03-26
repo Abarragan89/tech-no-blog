@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models/User');
-const Blog = require('../../models/Blog');
+const { User, Blog } = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -8,7 +7,6 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Blog,
-                attributes: ['blog_text']
             }
         ]
     })
