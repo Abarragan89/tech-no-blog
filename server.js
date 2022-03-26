@@ -3,7 +3,7 @@ const express = require('express');
 const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const routes = require('./routes')
+const routes = require('./controllers')
 
 // express middleware for JSON decoding
 app.use(express.json());
