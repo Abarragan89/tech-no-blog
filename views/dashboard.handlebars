@@ -1,0 +1,8 @@
+<div class="container">
+    <a href="/dashboard/create-blog/{{user_id}}" class="button mt-4 has-background-success has-text-white is-fullwidth is-responsive">Create a new blog</a>
+    </div>
+    {{#each blogs as |blog|}}
+    <a href="/edit-post">
+    {{>blog-post blog}}
+    </a>
+{{/each}}
