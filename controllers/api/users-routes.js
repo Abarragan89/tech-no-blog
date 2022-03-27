@@ -88,28 +88,14 @@ router.post('/signup', (req, res) => {
 });
 
 // POST api/users/logout
-router.post('/logout', (req, res) => {
-    if(req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-        alert('Logged Out')
-    }
-    else {
-        alert('already logged out')
-        res.status(404).end();
-    }
+router.post("/logout", (req, res) => {
+if (req.session.loggedIn) {
+    req.session.destroy(() => {
+    res.status(204).json({ message: "You are now logged out!" }).end();
+    });
+} else {
+    res.status(404).end();
+}
 });
 
-// router.post('/logout', (req, res) => {
-//     if(req.session.loggedIn) {
-//         req.session.destroy(function () {
-//             req.logout();
-//             res.redirect('/');              
-//         });
-//     }
-//     else {
-//         res.status(404).end();
-//     }
-// });
 module.exports = router;

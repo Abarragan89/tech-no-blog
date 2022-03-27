@@ -36,7 +36,7 @@ router.get('/:id', (req, res)=> {
         console.log(blog)
         console.log(blog.comments[0])
         const comments = blog.comments
-        res.render('single-blog', { comments, blog })
+        res.render('single-blog', { comments, blog, loggedIn: req.session.loggedIn })
     })
     .catch(err => {
         console.log(err);
@@ -58,6 +58,7 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
 // Add a comment to a Blog
 // router.put('/:id', (req, res) => {
 //     Blog.update(

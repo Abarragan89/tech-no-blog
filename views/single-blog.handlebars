@@ -1,6 +1,8 @@
 
 {{> blog-post blog}}
 {{!-- Add a Comment --}}
+
+{{#if loggedIn}}
 <div class="container ml-6 mr-6 mb-4">
 <form>
     <div class="container ml-6 mr-6">
@@ -9,6 +11,8 @@
     </div>
 </form>
 </div>
+{{/if}}
+
 {{!-- Comments --}}
 {{#each comments as |comment|}}
 <div class="container pr-6 pl-6">

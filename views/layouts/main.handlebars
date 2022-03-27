@@ -21,13 +21,13 @@
             <div class="level-right">
                 <div class="level-item">
                     <nav>
-                        
-                        <a href="/dashboard" class="button is-small is-size-6 has-background-grey-light">Dashboard</a>
-                        {{!-- {{#if loggedIn}} --}}
-                        <button id="logout" class="button is-small is-size-6 has-background-grey-light">Logout</button>
-                        {{!-- {{else}} --}}
-                        <a href="/login" class="button is-small is-size-6 has-background-grey-light">Login</a>
-                        {{!-- {{/if}} --}}
+                        <a href="/" class="button is-small is-size-6 has-background-primary-light">Home</a>
+                        <a href="/dashboard" class="button is-small is-size-6 has-background-primary-light">Dashboard</a>
+                        {{#if loggedIn}}
+                        <button id="logout" class="button is-small is-size-6 has-background-primary-light">Logout</button>
+                        {{else}}
+                        <a href="/login" class="button is-small is-size-6 has-background-primary-light">Login</a>
+                        {{/if}}
                     </nav>
                 </div>
             </div>
@@ -39,6 +39,6 @@
 </body>
 </html>
 
-{{!-- {{#if loggedIn}} --}}
+{{!-- {{#if sesson.loggedIn}} --}}
 <script src="/javascript/logout.js"></script>
 {{!-- {{/if}} --}}
