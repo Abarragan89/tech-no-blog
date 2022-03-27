@@ -87,12 +87,15 @@ router.get('/edit-post/:id', (req, res) => {
     })
 })
 
-// Add a comment to a Blog
-// router.put('/:id', (req, res) => {
-//     Blog.update(
-//         {
-            
-//         }
-//     )
-// })
+router.delete('/edit-post/:id', (req, res) => {
+    Blog.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBlogData => {
+        res.json(dbBlogData)
+    })
+})
+
 module.exports = router;
