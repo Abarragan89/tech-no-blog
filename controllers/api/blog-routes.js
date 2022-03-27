@@ -59,6 +59,34 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/edit-post/:id', (req, res) => {
+    Blog.update(
+        {
+            blog_title: req.body.blog_title,
+            blog_text: req.body.blog_text,
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbBlogData => {
+        res.json(dbBlogData)
+    })
+})
+router.get('/edit-post/:id', (req, res) => {
+    Blog.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBlogData => {
+        const blog = dbBlogData.get({ plain: true })
+        res.render('edit-blog', blog)
+    })
+})
+
 // Add a comment to a Blog
 // router.put('/:id', (req, res) => {
 //     Blog.update(
