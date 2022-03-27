@@ -12,8 +12,11 @@ Blog.belongsTo(User, {
 });
 
 // Blogs can have many Comments
-// Blog.hasMany(Comment);
-// Comment.belongsTo(Blog);
+Blog.hasMany(Comment);
+Comment.belongsTo(Blog);
+
+User.hasMany(Comment);
+Comment.belongsTo(User);
 
 
 module.exports = { User, Blog, Comment }

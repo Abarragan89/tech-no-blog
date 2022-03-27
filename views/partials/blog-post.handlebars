@@ -1,0 +1,26 @@
+
+<div class="container p-4">
+    <div class="card">
+        <header class="card-header has-background-dark p-4">
+            <div class="container">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <h3 class="is-size-4 has-text-light">{{blog_title}}</h3>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <h5 class="has-text-light">Posted by {{user.username}} on {{formatDate createdAt}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                {{blog_text}}
+            </div>
+        </div>
+    </div>
+</div>

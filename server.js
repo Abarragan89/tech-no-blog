@@ -5,7 +5,8 @@ const routes = require('./controllers')
 const path = require('path');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const hbs = exphbs.create({});
+const helpers = require('./utils/date-format');
+const hbs = exphbs.create({ helpers });
 // Create session storage
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {

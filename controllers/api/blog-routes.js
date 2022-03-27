@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const Blog = require('../../models/Blog');
-const Comment = require('../../models/Comment');
-const User = require('../../models/User');
+const { Blog, Comment, User } = require('../../models');
+
 
 router.get('/', (req, res) => {
     Blog.findAll({
@@ -12,7 +11,6 @@ router.get('/', (req, res) => {
             }
         ]
     })
-
     .then(dbBlogData => res.json(dbBlogData))
     .catch(err => {
         console.log(err);
@@ -24,18 +22,25 @@ router.get('/:id', (req, res)=> {
     Blog.findOne({
         where: {
             id: req.params.id
+        },
+        include: {
+            model: Comment,
+            include: {
+                model: User,
+                attributes: ['username']
+            }
         }
     })
     .then(dbBlogData => {
-        if(!dbBlogData) {
-            res.status(404).console.log('No user with that ID');
-            return;
-        }
-        res.json(dbBlogData)
+        const blog = dbBlogData.get({ plain: true });
+        console.log(blog)
+        console.log(blog.comments[0])
+        const comments = blog.comments
+        res.render('single-blog', { comments, blog })
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json(err)
+        res.status(500).json(err);
     });
 });
 
