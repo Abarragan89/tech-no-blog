@@ -36,8 +36,36 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
-})
+});
+// api/users/login
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    })
+    // make a session using the information in the database associated with that use
+    .then(dbUserData => {
+        if(!dbUserData) {
+            res.status(400).json({ message: 'No user with that email exists'})
+            return;
+        }
+        const validPassword = dbUserData.checkPassword(req.body.password)
+        if(!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!'})
+            return;
+        }
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
+            console.log('You\'re logged in');
+            console.log(dbUserData)
+            res.json({ user: dbUserData, message: 'You\'re logged in'});
+        });
+    })
+});
 
 router.post('/signup', (req, res) => {
     User.create({
@@ -65,9 +93,23 @@ router.post('/logout', (req, res) => {
         req.session.destroy(() => {
             res.status(204).end();
         });
+        alert('Logged Out')
     }
     else {
+        alert('already logged out')
         res.status(404).end();
     }
 });
+
+// router.post('/logout', (req, res) => {
+//     if(req.session.loggedIn) {
+//         req.session.destroy(function () {
+//             req.logout();
+//             res.redirect('/');              
+//         });
+//     }
+//     else {
+//         res.status(404).end();
+//     }
+// });
 module.exports = router;

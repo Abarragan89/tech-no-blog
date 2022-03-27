@@ -23,11 +23,11 @@
                     <nav>
                         
                         <a href="/dashboard" class="button is-small is-size-6 has-background-grey-light">Dashboard</a>
-                       
+                        {{!-- {{#if loggedIn}} --}}
                         <button id="logout" class="button is-small is-size-6 has-background-grey-light">Logout</button>
-                     
+                        {{!-- {{else}} --}}
                         <a href="/login" class="button is-small is-size-6 has-background-grey-light">Login</a>
-                 
+                        {{!-- {{/if}} --}}
                     </nav>
                 </div>
             </div>
@@ -39,4 +39,6 @@
 </body>
 </html>
 
+{{!-- {{#if loggedIn}} --}}
 <script src="/javascript/logout.js"></script>
+{{!-- {{/if}} --}}
