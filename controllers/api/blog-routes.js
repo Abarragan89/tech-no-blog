@@ -58,5 +58,12 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
-
+// Add a comment to a Blog
+// router.put('/:id', (req, res) => {
+//     Blog.update(
+//         {
+            
+//         }
+//     )
+// })
 module.exports = router;

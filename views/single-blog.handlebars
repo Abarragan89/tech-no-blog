@@ -1,23 +1,25 @@
 
 {{> blog-post blog}}
-
+{{!-- Add a Comment --}}
+<div class="container ml-6 mr-6 mb-4">
+<form>
+    <div class="container ml-6 mr-6">
+    <textarea type="text" class="textarea is-primary" placeholder="Write comment here" name="comment_text" id="comment_text"></textarea>
+    <button type="submit" class="button mt-4" id="post_comment">Post Comment</button>
+    </div>
+</form>
+</div>
 {{!-- Comments --}}
 {{#each comments as |comment|}}
-<div class="container p-6">
+<div class="container pr-6 pl-6">
     <div class="card">
-        <header class="card-header has-background-dark p-4">
+        <header class="card-header has-background-dark p-1">
             <div class="container">
-                <div class="level">
-                    <div class="level-left">
-                        <div class="level-item">
-                            <h3 class="is-size-4 has-text-light">Comment by {{blog.blogId}} </h3>
-                        </div>
-                    </div>
-                    <div class="level-right">
-                        <div class="level-item">
-                            <h5 class="has-text-light">on {{comment.user.username}}</h5>
-                        </div>
-                    </div>
+                <div>
+                    <h3 class="has-text-light is-size-4">Comment by {{comment.user.username}} </h3>
+                </div>
+                <div>
+                    <h5 class="has-text-light is-size-6">on {{ formatDate comment.createdAt}}</h5>
                 </div>
             </div>
         </header>
@@ -29,3 +31,5 @@
     </div>
 </div>
 {{/each}}
+
+<script src="/javascript/add-comment.js"></script>
