@@ -1,6 +1,17 @@
+<div class="container is-fullhd">
+<section class="hero my-4">
+    <div class="hero-body has-background-warning">
+    <p class="title has-text-info-dark">
+    Welcome {{#if loggedIn}}{{username}}! {{/if}}Let's talk code.
+    </p>
+    </div>
+</section>
+
+</div>
+
 
 {{#each blogs as |blog|}}
-<a href="/api/blogs/{{id}}/{{user.id}}">
+<a href="/api/blogs/{{id}}/{{user_id}}">
 {{> blog-post blog}}
 </a>
 {{/each}}

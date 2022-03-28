@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     })
     .then(dbBlogData => {
         const blogs = dbBlogData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { blogs, loggedIn: req.session.loggedIn, user_id: req.session.user_id })
+        res.render('dashboard', { blogs, loggedIn: req.session.loggedIn, user_id: req.session.user_id, username: req.session.username })
     })
     .catch(err => {
         console.log(err);

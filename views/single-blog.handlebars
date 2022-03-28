@@ -1,31 +1,30 @@
 
 {{> blog-post blog}}
-{{!--Comment --}}
+{{!--Comments --}}
 <div class="container">
     <div class="columns is-mobile">
         <div class="column is-full">
             {{#each comments as |comment|}}
-            <div class="container mx-4">
+            <div class="container mx-6 mt-4">
                 <div class="card">
-                    <header class="card-header has-background-dark p-1">
+                    <header class="card-header has-background-info-dark p-1">
                             <div>
                                 <h3 class="has-text-light is-size-4">Comment by {{comment.user.username}} </h3>
-                                <h5 class="has-text-light is-size-6">on {{ formatDate comment.createdAt}}</h5>
+                                <h5 class="has-text-light ml-4 is-size-6">on {{ formatDate comment.createdAt}}</h5>
                             </div>
                     </header>
-                    <div class="card-content">
+                    <div class="card-content has-background-warning-light">
                         <div class="content">
                             {{comment.comment_text}}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {{/each}}
+            {{/each}}
 {{!-- Add Comments --}}
 {{#if loggedIn}}
             <div class="column is-full">
-                    <div class="container mx-4">
+                    <div class="container mx-6">
                     <div class="column">
                 <form id="post_comment">
                     <div class="container">

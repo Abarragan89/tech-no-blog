@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-info-light">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,6 @@
             <div class="level-left">
                 <div class="level-item">
                     <header>
-                    
                     <h1 class="is-size-2 has-text-white has-text-weight-bold">Tech No Blog</h1>
                     </header>
                 </div>
@@ -21,12 +20,12 @@
             <div class="level-right">
                 <div class="level-item">
                     <nav>
-                        <a href="/" class="button is-small is-size-6 has-background-primary-light">Home</a>
-                        <a href="/dashboard" class="button is-small is-size-6 has-background-primary-light">Dashboard</a>
+                        <a href="/" class="button is-small is-size-6 has-background-primary-light has-text-weight-bold has-text-link-dark mr-2">Home</a>
                         {{#if loggedIn}}
-                        <button id="logout" class="button is-small is-size-6 has-background-primary-light">Logout</button>
+                        <a href="/dashboard" class="button is-small is-size-6 has-text-weight-bold has-text-link-dark has-background-primary-light mr-2">Dashboard</a>
+                        <button id="logout" class="button is-small is-size-6 has-text-weight-bold has-text-link-dark has-background-primary-light">Logout</button>
                         {{else}}
-                        <a href="/login" class="button is-small is-size-6 has-background-primary-light">Login</a>
+                        <a href="/login" class="button has-text-weight-bold is-small is-size-6 has-text-link-dark has-background-primary-light">Login</a>
                         {{/if}}
                     </nav>
                 </div>
