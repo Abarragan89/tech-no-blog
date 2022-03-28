@@ -11,12 +11,11 @@ router.get('/', (req, res) => {
     });
 });
 
-
-router.post('/', (req, res) => {
+router.post('/:blog_id/:user_id', (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
-        user_id: req.body.user_id,
-        blog_id: req.body.blog_id
+        user_id: req.params.user_id,
+        blog_id: req.params.blog_id
     })
     .then(dbCommentData => {
         res.json(dbCommentData);

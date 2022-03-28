@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res)=> {
+router.get('/:blog_id/:user_id', (req, res)=> {
     Blog.findOne({
         where: {
-            id: req.params.id
+            id: req.params.blog_id
         },
         include: {
             model: Comment,
@@ -33,8 +33,6 @@ router.get('/:id', (req, res)=> {
     })
     .then(dbBlogData => {
         const blog = dbBlogData.get({ plain: true });
-        console.log(blog)
-        console.log(blog.comments[0])
         const comments = blog.comments
         res.render('single-blog', { comments, blog, loggedIn: req.session.loggedIn })
     })

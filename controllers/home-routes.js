@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
     .then(dbBlogData => {
         const blogs = dbBlogData.map(blog => blog.get({ plain: true }));
-        res.render('homepage', { blogs, loggedIn: req.session.loggedIn })
+        res.render('homepage', { blogs, loggedIn: req.session.loggedIn, user_id: req.session.user_id })
     })
     .catch(err => {
         console.log(err);
