@@ -6,8 +6,7 @@ router.get('/', (req, res) => {
     Blog.findAll({
         include:[
             {
-                model: User,
-                attributes: ['username']
+                model: User
             }
         ]
     })

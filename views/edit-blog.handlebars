@@ -1,9 +1,9 @@
 <form id="edit-blog" class="mt-5 mx-5">
     <div class="container">
     <label for="blog_title" class="is-size-5 is-bold">Blog Title:</label>
-    <input type="text" name="blog_title" id="blog_title_edit" class="input" value="{{blog_title}}">
+    <input type="text" name="blog_title" id="blog_title_edit" class="input" value="{{blog.blog_title}}">
     <label for="blog_title" class="is-size-5">Blog Text:</label>
-    <textarea type="text" name="blog_text" id="blog_text_edit" class="textarea">{{blog_text}}</textarea>
+    <textarea type="text" name="blog_text" id="blog_text_edit" class="textarea">{{blog.blog_text}}</textarea>
     <div class="container mx-5">
     <button class="button mt-4 has-background-success has-text-white is-fullwidth" type="submit">Save Blog</button>
     <button class="button mt-4 has-background-danger has-text-white is-fullwidth" type="submit">Delete Blog</button>

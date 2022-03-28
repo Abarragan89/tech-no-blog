@@ -10,10 +10,9 @@ async function addComment (event) {
     const response = await fetch(`/api/comments/${blog_id}/${user_id}`, {
         method: 'POST',
         body: JSON.stringify({
-            comment_text,
-            blog_id,
-            user_id
-        })
+            comment_text
+        }),
+        headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
         window.location.reload();

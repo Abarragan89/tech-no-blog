@@ -7,17 +7,50 @@ router.get('/', (req, res) => {
         include:[
             {
                 model: User,
-                attributes: ['username']
             }
         ]
     })
-    .then(dbBlogData => res.json(dbBlogData))
+    .then(dbBlogData => {
+        res.json(dbBlogData)
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
+// get to the editing interface
+router.get('/edit-post/:id', (req, res) => {
+    Blog.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBlogData => {
+        const blog = dbBlogData.get({ plain: true });
+        console.log(blog)
+        res.render('edit-blog',  { blog } )
+    })
+})
+// Edit a post
+router.put('/edit-post/:id', (req, res) => {
+    Blog.update(
+        {
+            blog_title: req.body.blog_title,
+            blog_text: req.body.blog_text,
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbBlogData => {
+        res.json(dbBlogData)
+    })
+})
+
+// Get a single blog and all the info that comes with it. 
 router.get('/:blog_id/:user_id', (req, res)=> {
     Blog.findOne({
         where: {
@@ -57,33 +90,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/edit-post/:id', (req, res) => {
-    Blog.update(
-        {
-            blog_title: req.body.blog_title,
-            blog_text: req.body.blog_text,
-        },
-        {
-            where: {
-                id: req.params.id
-            }
-        }
-    )
-    .then(dbBlogData => {
-        res.json(dbBlogData)
-    })
-})
-router.get('/edit-post/:id', (req, res) => {
-    Blog.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(dbBlogData => {
-        const blog = dbBlogData.get({ plain: true })
-        res.render('edit-blog', blog)
-    })
-})
+
 
 router.delete('/edit-post/:id', (req, res) => {
     Blog.destroy({

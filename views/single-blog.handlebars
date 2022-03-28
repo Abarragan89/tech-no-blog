@@ -3,10 +3,10 @@
 {{!--Comment --}}
 <div class="container">
     <div class="columns is-mobile">
-        <div class="column">
+        <div class="column is-full">
+            {{#each comments as |comment|}}
             <div class="container mx-4">
                 <div class="card">
-                {{#each comments as |comment|}}
                     <header class="card-header has-background-dark p-1">
                             <div>
                                 <h3 class="has-text-light is-size-4">Comment by {{comment.user.username}} </h3>
@@ -24,13 +24,12 @@
     {{/each}}
 {{!-- Add Comments --}}
 {{#if loggedIn}}
-            <div class="column">
+            <div class="column is-full">
                     <div class="container mx-4">
                     <div class="column">
                 <form id="post_comment">
                     <div class="container">
                     <textarea type="text" class="textarea is-primary" placeholder="Write comment here" name="comment_text" id="comment_text"></textarea>
-
                     <button type="submit" class="button mt-4 has-background-primary has-text-white">Post Comment</button>
                     </div>
                 </form>
