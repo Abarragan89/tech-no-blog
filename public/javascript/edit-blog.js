@@ -6,7 +6,6 @@ async function editBlog(event) {
     const blog_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-
     const response = await fetch(`/api/blogs/edit-post/${blog_id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -39,4 +38,4 @@ async function deleteBlog(event) {
 }
 
 document.querySelector('#edit-blog').addEventListener('submit', editBlog)
-document.querySelector('#edit-blog').addEventListener('submit', deleteBlog)
+document.querySelector('#delete-blog').addEventListener('click', deleteBlog)

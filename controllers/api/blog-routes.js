@@ -19,19 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get to the editing interface
-router.get('/edit-post/:id', (req, res) => {
-    Blog.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(dbBlogData => {
-        const blog = dbBlogData.get({ plain: true });
-        console.log(blog)
-        res.render('edit-blog',  { blog } )
-    })
-})
+
 // Edit a post
 router.put('/edit-post/:id', (req, res) => {
     Blog.update(
@@ -50,6 +38,19 @@ router.put('/edit-post/:id', (req, res) => {
     })
 })
 
+// get to the editing interface
+router.get('/edit-post/:id', (req, res) => {
+    Blog.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBlogData => {
+        const blog = dbBlogData.get({ plain: true });
+        console.log(blog)
+        res.render('edit-blog',  { blog } )
+    })
+})
 // Get a single blog and all the info that comes with it. 
 router.get('/:blog_id/:user_id', (req, res)=> {
     Blog.findOne({
