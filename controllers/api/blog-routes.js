@@ -47,7 +47,6 @@ router.get('/edit-post/:id', (req, res) => {
     })
     .then(dbBlogData => {
         const blog = dbBlogData.get({ plain: true });
-        console.log(blog)
         res.render('edit-blog',  { blog } )
     })
 })
